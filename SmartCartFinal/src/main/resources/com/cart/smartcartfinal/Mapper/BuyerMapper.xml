@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cart.smartcartfinal.Mapper.BuyerMapper">
+
+    <sql id="CommonSelect">
+        select p_BuyerID, n_UserName, n_Password, n_JoinDate, c_Name, c_Sex, c_Address, c_PhoneNumber
+        from buyer
+    </sql>
+
+    <select id="GetAllBuyers" resultType="com.cart.smartcartfinal.Entity.Buyer">
+        <include refid="CommonSelect"></include>
+    </select>
+
+    <select id="GetBuyerByUsernameAndPassword" resultType="com.cart.smartcartfinal.Entity.Buyer">
+        <include refid="CommonSelect"></include>
+        where n_UserName = #{username} and n_Password = #{password}
+    </select>
+</mapper>
